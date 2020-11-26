@@ -1,0 +1,31 @@
+* {
+  font-size: 14px;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main {
+  display: flex;
+  background-color: #bebebe;
+  padding: 20px;
+}
+
+.board {
+  border: 2px solid #3a3a3a;
+  margin-right: 20px;
+}
+
+.panel {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+button.start-button {
+  padding: 10px;
+  background-color: greenyellow;
+  border-radius: 5px;
+  border: unset;
+}
