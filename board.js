@@ -14,4 +14,16 @@ class Board {
   };
   isInside = (x) => x >= 0 && x < COLS;
   isAbove = (y) => y < ROWS;
+  rotate = (oldFigure) => {
+    let p = JSON.parse(JSON.stringify(oldFigure));
+    p.shape = oldFigure.shape[0].map((x, i) => oldFigure.shape.map((x) => x[i]));
+    p.shape.forEach((row) => row.reverse());
+    return p;
+  };
+  counterRotate = (oldFigure) => {
+    let p = JSON.parse(JSON.stringify(oldFigure));
+    p.shape = oldFigure.shape[0].map((x, i) => oldFigure.shape.map((x) => x[i]));
+    p.shape.forEach((row) => row.reverse());
+    return p;
+  };
 }

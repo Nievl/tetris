@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tetris</title>
     <link rel="stylesheet" href="./style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <h2>Tetris</h2>
     <div class="main">
       <canvas id="board" class="board"></canvas>
       <div class="panel">
@@ -16,6 +18,37 @@
           <div>score:<span id="score">0</span></div>
           <div>lines:<span id="lines">0</span></div>
           <div>level:<span id="level">0</span></div>
+          <h3>Help</h3>
+          <table class="hotkey">
+            <thead>
+              <tr>
+                <th>key</th>
+                <th>action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>➡️</td>
+                <td>move right</td>
+              </tr>
+              <tr>
+                <td>⬅️</td>
+                <td>move left</td>
+              </tr>
+              <tr>
+                <td>⬇️</td>
+                <td>move down</td>
+              </tr>
+              <tr>
+                <td>Z</td>
+                <td>rotate clockwise</td>
+              </tr>
+              <tr>
+                <td>X</td>
+                <td>rotate counterclockwise</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <button class="start-button" id="startGame">start</button>
       </div>

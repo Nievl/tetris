@@ -7,7 +7,6 @@ ctx.canvas.width = COLS * BLOCK_SIZE;
 ctx.canvas.height = ROWS * BLOCK_SIZE;
 
 ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
-console.log("ctx: ", ctx);
 
 // -----------------------------------
 let board = new Board();
@@ -26,6 +25,8 @@ const moves = {
   [KEY.LEFT]: (p) => ({ ...p, x: p.x - 1 }),
   [KEY.RIGHT]: (p) => ({ ...p, x: p.x + 1 }),
   [KEY.DOWN]: (p) => ({ ...p, y: p.y + 1 }),
+  [KEY.ROTATE]: (p) => board.rotate(p),
+  [KEY.COUNTERROTATE]: (p) => board.counterRotate(p),
 };
 // -----------------------------------
 document.addEventListener("keydown", (e) => {

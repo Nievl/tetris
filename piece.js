@@ -3,8 +3,8 @@ class Piece {
     this.ctx = ctx;
     this.color = "blue";
     this.shape = [
-      [2, 2, 0],
-      [2, 2, 0],
+      [0, 2, 0],
+      [2, 2, 2],
       [0, 0, 0],
     ];
 
@@ -23,5 +23,6 @@ class Piece {
   move = (p) => {
     this.x = p.x;
     this.y = p.y;
+    this.shape = p.shape;
   };
 }
