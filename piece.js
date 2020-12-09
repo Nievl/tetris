@@ -1,15 +1,7 @@
 class Piece {
   constructor(ctx) {
     this.ctx = ctx;
-    this.color = "blue";
-    this.shape = [
-      [0, 2, 0],
-      [2, 2, 2],
-      [0, 0, 0],
-    ];
-
-    this.x = 3;
-    this.y = 0;
+    this.spawn();
   }
 
   draw = () => {
@@ -24,5 +16,12 @@ class Piece {
     this.x = p.x;
     this.y = p.y;
     this.shape = p.shape;
+  };
+  randomizePiece = (noOfTypes) => Math.floor(Math.random() * noOfTypes);
+  spawn = () => {
+    this.color = COLORS[this.randomizePiece(COLORS.length - 1)];
+    this.shape = SHAPES[this.randomizePiece(SHAPES.length - 1)];
+    this.x = 3;
+    this.y = 0;
   };
 }

@@ -43,13 +43,22 @@ const moves = {
   [KEY.DOWN]: (p) => ({ ...p, y: p.y + 1 }),
   [KEY.ROTATE]: (p) => board.rotate(p),
   [KEY.COUNTERROTATE]: (p) => board.counterRotate(p),
+  [KEY.SPACE]: (p) => ({ ...p, y: p.y + 1 }),
 };
 // -----------------------------------
 document.addEventListener("keydown", (e) => {
   if (moves[e.keyCode]) {
     e.preventDefault();
     let p = moves[e.keyCode](board.piece);
-    if (board.valid(p)) {
+
+    if (e.keyCode === KEY.SPACE) {
+      while (board.valid(p)) {
+        board.piece.move(p);
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        board.piece.draw();
+        p = moves[KEY.DOWN](board.piece);
+      }
+    } else if (board.valid(p)) {
       board.piece.move(p);
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       board.piece.draw();
