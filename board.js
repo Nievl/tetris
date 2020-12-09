@@ -21,7 +21,7 @@ class Board {
 
   rotate = (oldFigure) => {
     let p = JSON.parse(JSON.stringify(oldFigure));
-    const tmpArr = [[], [], []];
+    const tmpArr = p.length === 3 ? [[], [], []] : [[], [], [], []];
     for (let rowIndex = 0; rowIndex < oldFigure.shape.length; rowIndex++) {
       const row = oldFigure.shape[rowIndex];
       for (let columnIndex = 0; columnIndex < row.length; columnIndex++) {
@@ -33,7 +33,7 @@ class Board {
   };
   counterRotate = (oldFigure) => {
     let p = JSON.parse(JSON.stringify(oldFigure));
-    const tmpArr = [[], [], []];
+    const tmpArr = p.length === 3 ? [[], [], []] : [[], [], [], []];
     for (let rowIndex = 0; rowIndex < oldFigure.shape.length; rowIndex++) {
       const row = oldFigure.shape[rowIndex];
       for (let columnIndex = 0; columnIndex < row.length; columnIndex++) {
