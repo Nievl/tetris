@@ -33,6 +33,14 @@ button.start-button {
   border: unset;
 }
 
+@media screen and (max-width: 800px) {
+  .hotkey {
+    text-align: left;
+    border-collapse: collapse;
+    width: 300px;
+  }
+}
+
 .hotkey {
   text-align: left;
   border-collapse: collapse;
@@ -58,4 +66,8 @@ button.start-button {
   line-height: unset;
   background-color: green;
   color: #000;
+}
+
+.hotkey td:first-child > button > svg {
+  margin-top: 15px;
 }
