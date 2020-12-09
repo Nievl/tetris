@@ -1,5 +1,6 @@
 const $canvas = document.querySelector("#board");
 const $button = document.querySelector("#startGame");
+const $buttonKey = document.querySelectorAll('button[data-action="keyDown"]');
 
 const ctx = $canvas.getContext("2d");
 
@@ -20,6 +21,21 @@ function start() {
 }
 
 $button.addEventListener("click", start);
+// -----------------------------------
+
+function keyDown(e) {
+  const keyCode = KEY[e.target.dataset.name];
+  if (keyCode) {
+    let p = moves[keyCode](board.piece);
+    if (board.valid(p)) {
+      board.piece.move(p);
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      board.piece.draw();
+    }
+  }
+}
+
+$buttonKey.forEach((button) => button.addEventListener("click", keyDown));
 // -----------------------------------
 const moves = {
   [KEY.LEFT]: (p) => ({ ...p, x: p.x - 1 }),

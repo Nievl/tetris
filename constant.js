@@ -9,4 +9,5 @@ const KEY = {
   ROTATE: 90,
   COUNTERROTATE: 88,
 };
+
 Object.freeze(KEY);
