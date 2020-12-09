@@ -8,6 +8,7 @@ ctx.canvas.width = COLS * BLOCK_SIZE;
 ctx.canvas.height = ROWS * BLOCK_SIZE;
 
 ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
+const time = { start: 0, elapsed: 0, level: 1000 };
 
 // -----------------------------------
 let board = new Board();
@@ -18,6 +19,8 @@ function start() {
   console.log("piece: ", piece);
   piece.draw();
   board.piece = piece;
+  time.start = performance.now();
+  animate();
 }
 
 $button.addEventListener("click", start);
@@ -65,4 +68,15 @@ document.addEventListener("keydown", (e) => {
     }
   }
 });
+// -----------------------------------
+function animate(now = 0) {
+  time.elapsed = now - time.start;
+  if (time.elapsed > time.level) {
+    time.start = now;
+    board.drop();
+  }
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  board.draw();
+  requestAnimationFrame(animate);
+}
 // -----------------------------------
