@@ -16,14 +16,26 @@ class Board {
   isAbove = (y) => y < ROWS;
   rotate = (oldFigure) => {
     let p = JSON.parse(JSON.stringify(oldFigure));
-    p.shape = oldFigure.shape[0].map((x, i) => oldFigure.shape.map((x) => x[i]));
-    p.shape.forEach((row) => row.reverse());
+    const tmpArr = [[], [], []];
+    for (let rowIndex = 0; rowIndex < oldFigure.shape.length; rowIndex++) {
+      const row = oldFigure.shape[rowIndex];
+      for (let columnIndex = 0; columnIndex < row.length; columnIndex++) {
+        tmpArr[columnIndex][row.length - rowIndex - 1] = oldFigure.shape[rowIndex][columnIndex];
+      }
+    }
+    p.shape = tmpArr;
     return p;
   };
   counterRotate = (oldFigure) => {
     let p = JSON.parse(JSON.stringify(oldFigure));
-    p.shape = oldFigure.shape[0].map((x, i) => oldFigure.shape.map((x) => x[i]));
-    p.shape.forEach((row) => row.reverse());
+    const tmpArr = [[], [], []];
+    for (let rowIndex = 0; rowIndex < oldFigure.shape.length; rowIndex++) {
+      const row = oldFigure.shape[rowIndex];
+      for (let columnIndex = 0; columnIndex < row.length; columnIndex++) {
+        tmpArr[row.length - columnIndex - 1][rowIndex] = oldFigure.shape[rowIndex][columnIndex];
+      }
+    }
+    p.shape = tmpArr;
     return p;
   };
 }
