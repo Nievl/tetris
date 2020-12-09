@@ -24,7 +24,7 @@ $button.addEventListener("click", start);
 // -----------------------------------
 
 function keyDown(e) {
-  const keyCode = KEY[e.target.dataset.name];
+  const keyCode = KEY[e.currentTarget.dataset.name];
   if (keyCode) {
     let p = moves[keyCode](board.piece);
     if (board.valid(p)) {
