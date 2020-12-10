@@ -1,15 +1,38 @@
 class Board {
+  constructor(ctx) {
+    this.ctx = ctx;
+    this.piece = null;
+  }
+
   reset = () => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     this.grid = this.getEmptyBoard();
   };
 
-  draw = () => this.piece.draw();
+  draw = () => {
+    this.piece.draw();
+    this.drawFullBoard();
+  };
+
+  drawFullBoard() {
+    this.grid.forEach((row, y) =>
+      row.forEach((color, x) => {
+        if (color > 0) {
+          this.ctx.fillStyle = COLORS[color];
+          this.ctx.fillRect(x, y, 1, 1);
+        }
+      })
+    );
+  }
 
   drop() {
     let p = moves[KEY.DOWN](this.piece);
     if (this.valid(p)) {
       this.piece.move(p);
+    } else {
+      this.freeze();
+      this.piece = new Piece(this.ctx);
+      this.piece.setStartPosition();
     }
   }
 
@@ -52,4 +75,12 @@ class Board {
     p.shape = tmpArr;
     return p;
   };
+
+  freeze() {
+    this.piece.shape.forEach((row, y) =>
+      row.forEach((color, x) => {
+        if (color > 0) this.grid[y + this.piece.y][x + this.piece.x] = color;
+      })
+    );
+  }
 }

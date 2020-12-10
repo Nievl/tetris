@@ -21,7 +21,8 @@ class Piece {
   spawn = () => {
     this.color = COLORS[this.randomizePiece(COLORS.length - 1)];
     this.shape = SHAPES[this.randomizePiece(SHAPES.length - 1)];
-    this.x = 3;
+    this.x = 4;
     this.y = 0;
   };
+  setStartPosition = () => (this.x = 4);
 }

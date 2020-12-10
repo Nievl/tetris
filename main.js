@@ -11,7 +11,7 @@ ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
 const time = { start: 0, elapsed: 0, level: 1000 };
 
 // -----------------------------------
-let board = new Board();
+let board = new Board(ctx);
 
 function start() {
   board.reset();
